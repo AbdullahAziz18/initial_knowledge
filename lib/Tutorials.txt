@@ -1,0 +1,740 @@
+Following are the data types:
+  1. int
+  2. double
+  3. num
+  4. string
+    >String interpoliation example:
+      void main() {
+         var a=10, b="ok",c='no';
+          print('$a $b $c');
+         }
+  5. boolean
+  6. list(array)
+  7. map (associative array)
+  Mutability:(Means the value can be changed)
+  8. dynamic: use the word "dynamic"( it is a data type that automatically understands 
+     the data type provided to it and it can be reassigned another data type)
+  9. var(use keyword:"var", it is a data type that automatically understands 
+     the data type provided to it and it can not be reassigned another data type)
+  Immutability:(Means the value can't be changed)
+  10. final(use keyword:"final", it is a data type that automatically understands 
+     the data type provided to it but can only be assigned once, it is a runTime constant)   
+  11.const(use keyword:"const", it is a data type that automatically understands 
+     the data type provided to it but it can't be changed, it is a compileTime constant)
+  12. Optional variables: Use "?" after the data type then it can be given "null" as a value, ! 
+      means that the value isn't null
+
+STRING:
+  We can use "+" to combine string data types
+
+ARITHIMETIC Operators
+  +, -, *, /, %, ~/, ++, --
+
+ASSIGNMNET Operator
+  =
+
+RELATIONAL Operators
+  > < >= <= == !=
+
+TEST Operators
+  is  is! 
+
+LOGICAL Operators
+  &&, ||, !
+
+CONDITIONAL Operators
+  ?:, ??:
+
+CASCADE Operator
+   ..
+
+BITWISE Operator
+   &, |, ~, ^, a<<b, a>>b
+
+CONTROL STRUCTURES
+   if, if-else, if-elseif-else, ternary, switch
+   Example of ternary: <datatype> <name> = <condition> ? <operation if true> : <operation if false>;
+      void main() {
+      num a=10,b=29.2;
+        String c = (a==10)?"ok" : 'no';
+        print(c); 
+        }
+
+LOOPS
+    for, while, do-while
+   FOR LOOP
+   for(int i=1;  i<=10; i++){
+   if(i==5){
+     break;
+   } 
+    print(i);
+  }
+  
+   WHILE LOOP
+  int i=1;
+  while(i<=10){
+    if(i==6){
+      break;    }
+    print(i);
+      i++;
+  }
+  
+   DO WHILE LOOP
+  int i=11;
+  do{
+    print(i);
+    i++;
+  }while(i<=10);    
+
+FUNCTIONS
+  Functions basic rules, expressions( FAT Arrow), parameter, optional parameter, named parameter.
+  In dart language, a function always returns something, if nothing is returned then it returns "null".
+  Writting a function is similar to C++.
+  >A new thing is a Fat Arrow i.e., FunctionName(int a, int b) => print((a-b));  
+   >This can only be used if a function has only one statement.
+  >Another new thing is "optional parameter":
+        main(){
+             getNumber(10,20);
+        }
+             getNumber(int a, [int b=10]){ 
+            print(a+b);
+        } 
+    >We need to make sure that the optional parameter(in this case) 'b' must have a default value(10).
+  >Another new thing is "named parameter":
+        void main() {
+            getNumber(a:10,c:30,b:20); 
+        }
+            getNumber({int? a, int b=0,required int c}){
+                   print(a);
+                   print(b);
+                   print(c);
+  
+                   var num=(a+b)*c;
+                    print(num);
+        }
+     > We need to either give a deafult value or add the keyword 'required' or add"?" to the named 
+        parameters.
+     > Nothing can be passed in the function after the "required" arrguments    
+     >Following is an example code for "records":
+      void main() {          
+          var name=printName();
+          print(name.$1);          
+          }
+        (int , String) printName(){
+          
+          return(21,'Abdullah');          
+         }
+    > Another example:
+        void main() {
+            var (int, String) = printName();
+            print(int);
+            print(String);
+          }
+          (int, String) printName() {
+            return (21, 'Abdullah');
+          }
+    >Following is an example code for "named records":
+          void main() {
+              var things = printName();
+              print(things.age);
+              print(things.name);
+            }
+            ({int age, String name}) printName() {
+              return (age: 21,name: 'Abdullah');
+            }
+    >Following is an example code for a function returning a function:
+        void main() {
+            final things = printName();
+            things();
+            //This line bellow is an immediately invoked function expression (IIFE) in Dart.
+            (){
+              print('yoo');
+            }();
+          }
+          Function printName() {
+            return //This is called an anonymyus functions: (){
+              print('Ok');
+            };
+          }
+    >Following is the example code for patterns:
+       void main() {         
+          var (age,name)=printName();
+          print(name);
+          print(age);          
+          }
+        (int , String) printName(){          
+          return(21,'Abdullah');           
+        }
+    >Following is the example code for null functions:
+      void main() {  
+            var (name)=printName();
+            print(name);   
+            }
+               String? printName(){   
+               return null;  
+          }
+
+COLLECTIONS
+    List(fixed, growable), Set, Map
+
+    LIST
+     >Following is the basic code for creating a list(fixed) in dart.
+        >3: This is the length of the list. The list will have 3 elements.
+        >6: This is the value with which all elements of the list will be initialized. Every element 
+            in the list will have the value 6.
+    void main() {
+            List<int> larr = List.filled(3,6);
+                larr[0]=10;
+                larr[1]=20;
+                larr[2]=30;
+        //Following are different ways to print a list.
+            1.for(int x in larr){
+                print(x);
+                }
+            2.larr.forEach((x)=>print(x));
+            3.for(int i=0; i<larr.length; i++){
+                print(larr[i]);
+                }
+            }
+    >Following is another example of list with for-in loop:
+         void main() {
+            List<Employe> employes=[
+              Employe('Abdullah', 300), 
+              Employe('Aziz', 400),
+              Employe('Ali', 500)
+            ];
+          print(employes);
+            List<Employe> betterPaid=[];
+            for(var employe in employes){
+              if(employe.salary >= 400){
+                betterPaid.add(employe);
+              }
+            }
+            print(betterPaid);
+     //Another way to do the same thing as above is:
+                Iterable<Employe> employes=[
+                  Employe('Abdullah', 300), 
+                  Employe('Aziz', 400),
+                  Employe('Ali', 500)
+                ];
+              print(employes);
+              final betterPaid= employes.where((employes)=>employes.salary>=400);
+                print(betterPaid.toList());    
+            //Another way is 
+            employes=employes.where((employes)=>employes.salary>=400).toList();
+              print(employes);
+            //In this way, we would not need to initiate a new variable
+          }
+          class Employe{
+            final String name;
+            final int salary; 
+            Employe(this.name,this.salary);
+            String toString()=> 'Employe: $name';
+          }
+    >Following is the basic code for creating a list(drowable) in dart.
+    >There are 2 ways to intialize a drowable list:
+            >1st is by using larr.add(); Providing the value in the brakets.
+            >2nd is the code at line 125.
+    >There are different functions for drowable list, some of them are mentioned in lines 132-135.
+    void main() {
+            List<int> larr = [10,20,30,40];
+                
+                larr.add(10);
+                larr.add(20);
+                larr.add(30);
+                larr.add(40);
+
+                larr[1]=100;
+                larr.remove(10);
+                larr.removeAt(1);
+                larr.clear();
+        //To print we can use the same ways as fixed list.
+        }
+
+     SET
+    >SET is used for unordered list.
+    >Set doesn't allow duplication of data in it's indexes while list can.
+        >This means that same values can't be given to different indexes in SET.
+    >Following is the basic code for SET.
+    void main(){
+        There are 2 ways to initialize SET:
+            1.Set<int> sarr = Set();
+                sarr.add(10);
+                sarr.add(20);
+            2.Set<int> sarr = Set.from([10,20]);
+        Following are some functions of SET:
+            print(sarr.contains(10)); //Returns boolean value  
+            sarr.remove(10);
+            print(sarr.isEmpty);     //Returns boolean value
+            sarr.length;
+        Following are the ways to print SET:
+            1.for(int x in sarr){
+                    print(x);
+                        }
+            2.sarr.forEach((x)=>print(x));
+            }
+
+    MAP  
+    >The data in Map is in unordered way but is in key & value form(IDK what that means).
+    >Following is the basic code for MAP:
+    void main() {
+        There are 2 ways to initialize a map:
+        1.Map<String,String> marr=Map();
+        2.Map<String,String> marr={
+            'Name': 'Abdullah',
+            'City': 'Lahore'
+                    };
+            Bellow we are giving value to the map forcefully:
+                marr['Email']='abdullahabuzer11@gmail.com';
+            Following are some functions of Maps:
+                marr.remove('Name');
+                marr.length;
+                marr.clear();
+                marr.isEmpty; //Returns boolean value.
+                marr.containsKey("Name");//Returns boolean value.
+                marr.containsValue("Abdullah");//Returns boolean value.
+            Following are the ways to print MAP:
+               1.  for(String key in marr.keys){
+                        print(key);
+                            }
+                 for(String value in marr.values){
+                        print(value);
+                            }
+                    1 for loop would give one thing at once i.e., either key or value
+               2.  marr.forEach((key,value) => print(key+': '+value));
+               3.marr.forEach((key,value){
+                   print('$key : $value');
+                 });
+        } 
+    //Another example for Maps:
+        void main() {
+            final list = [10, 20, 30];
+            Map<String, int> salary = {'Abdullah': 200, 'Aziz': 300, 'Ali': 400};
+            if (salary['Ayesha'] == null) {
+              print("Employe doesn't exist");
+            } else {
+              print(salary['Ayesha']?.isEven);
+            }
+          }
+          class Employe {
+            final String name;
+            final int salary;
+            Employe(this.name, this.salary);
+            String toString() => 'Employe: $name';
+          }
+
+  //You can pass a list to a map and a map to a list.For example:
+            void main() {
+            final list = [10, 20, 30];
+            Map<String, int> salaryOfGroupA = {'Abdullah': 200, 'Aziz': 300, 'Ali': 400};
+            List<Map<String, int>> salary = [
+              {'Aitzaz': 400, 'Ahsan': 500, 'Arshad': 600},
+              {'Rabbi': 700, 'Jamil': 800, 'Usama': 900},
+              salaryOfGroupA
+            ];
+            salary.map((e) {
+              e.forEach((key, val) {
+                print('$key : $val');
+              });
+            }).toList();
+          }
+          class Employe {
+            final String name;
+            final int salary;
+            Employe(this.name, this.salary);
+            String toString() => 'Employe: $name';
+          }
+
+OOP 
+    CLass, Object, Constructor(Default, Parameterized, Named)
+    Main concepts of OOP is:
+    1. Polymorphism
+    2. Inheritance
+    3. Abstraction
+    4. Encapsulation 
+    There is no concept of public, private, protected variables in dart
+    >Following is the basic code for OOP:
+        void main() {
+    
+            //var obj= class1();
+            class1.myConst('Abdullah');
+            } 
+
+        class class1{
+            var name;
+            //Named constructor:
+            class1.myConst(name){
+                this.name=name;
+                print('hello '+name);
+            }
+        Parameterized Constructor:
+        class1(name){
+             this.name=name;
+        }
+        Short method of above constructor:
+        class1(this.name);
+        Defalt constructor:
+        class1(){
+            print('deafult constructor');    
+            }
+        Function inside class:
+        fun1(){
+                print('Hi there '+name);
+            }  
+    }
+    > We use "static" keyword to make a class in which we can access the static variables and functions
+      without the need to create thep object/instance of that class.
+    >Following is the example code for "static":
+    void main() {
+          print(Constants.greetings);
+          print(Constants.bye);
+          print(Constants.giveMeValue());
+        }
+        class Constants{
+          Constants(){
+            print('Constructor');
+          }
+          //Static variables
+          static String greetings="Hi!";
+          static String bye="Bye!";
+          //Static function:  
+          static int giveMeValue(){
+            return 10;
+          } 
+        }  
+    > Non-static variables can't be used in static functions   
+        For example: int heigth can't be used in the function giveMeValue.
+                      It has to be static int heigth.  
+
+INHERTANCE
+  Single level, Multi level
+  >Only one child is created in single level inheritance
+  Following is an example code for single level inheritance
+      void main() {
+          var obj= class2();
+          obj.fun1();
+          print(obj.name);        
+        }
+        class class1 {
+            var name='Abdullah';
+           class1(){
+              print('class1_constructor');
+              }   
+            fun1(){
+              print('Hello this is fun1 of class1');
+              }
+          }
+        class class2 extends class1{
+            class2(){         
+            print('class2_constructor');
+            }         
+          }
+  >Following is another example with a slight change using the keyword "as":
+   void main() {  
+            Vehicle car= Car();
+            print(car.isEngineWorking);
+            print((car as Car).noOfWheels);            
+            var truck = Truck();
+            print(truck.isEngineWorking);
+            print(truck.noOfWheels);
+          }
+          class Vehicle{
+            int speed = 10;
+            bool isEngineWorking = true;
+            bool isLightON = false;            
+            void accelrate(){
+              speed +=10;
+            }
+          }
+          class Car extends Vehicle{
+            int noOfWheels = 4;            
+              void printSomething(){
+                print(noOfWheels);
+              }
+          }
+          class Truck extends Vehicle{
+              int noOfWheels = 8;            
+              void printSomething(){
+                print(noOfWheels);
+              }            
+          }
+              
+  Following is the example code for mult level inheritance
+     void main() {
+          var obj= class3();
+          obj.fun1();
+          print(obj.name);        
+        }
+        class class1 {
+            var name='Abdullah';
+           class1(){
+              print('class1_constructor');
+              }   
+            fun1(){
+              print('Hello this is fun1 of class1');
+              }
+          }
+        class class2 extends class1{
+            class2(){         
+            print('class2_constructor');
+            }         
+          }
+        class class3 extends class2{
+            class3(){         
+            print('class3_constructor');
+            }         
+          }
+
+POLYMORPHISM
+  The keyword "super" is used to use the function/variable of parent class.
+  Following is the example code for polymorphism 
+      void main() {          
+          hr obj=hr();
+          obj.fun1();
+        }
+        class employe{
+          var name='Abdullah';
+        fun1(){
+          print('Employe fun1');            
+        }
+        }
+        class hr extends employe{
+          var name='Aziz';
+        fun1(){
+          super.fun1();
+          print(super.name);
+          print(name);            
+        }
+        }
+
+ABSTRACT CLASSES
+  The keyword "abstract" is used to make an abstract class
+  No object will be created of the abstract class
+  abstract class can contain normal functions and variables as well
+  Some other keywords that perform the same function as "abstract" are:
+    "sealed", "final","base", "interface".
+  Following is the example code for abstract classes
+      void main() { 
+          hr obj=hr();
+          obj.fun1();
+        }
+        abstract class employe{
+          var name='Abdullah';
+        fun1();
+        }
+        class hr extends employe{  
+          fun1(){
+            print(name);
+          }  
+        }
+
+IMPLEMENTS
+  This particular thing is same as multiple inheritance but is not much same either
+  It uses the keyword "implements" to apply this functionality
+  Following is the example code for IMPLEMENTS
+      void main() {
+          class3 obj=class3();
+          obj.fun1();
+        }
+        class class1{
+          fun1(){
+          print('fun1_class1'); 
+          }
+        }
+        class class2 extends class1{
+          fun2(){
+          print('fun2_class2'); 
+          }
+        }
+        class class3 implements class1,class2{
+          fun1(){
+          print('fun1_class3'); 
+          }
+          fun2(){
+          print('fun2_class3'); 
+          }     
+        }
+  
+MIXINS
+  >This is a keyword that is used to make different classes used as multiple inheritance.
+  >Following is an example code for "mixins":
+   void main() { 
+          var animal = Animal();
+           animal.ok();
+        }
+        //We can use the word "on" after the mixin name to specify it's usage.
+       mixin Jump{
+         int jumping = 10;
+       }
+       mixin Scream{
+         bool isScreaming=false;
+       } 
+       class Animal with Jump,Scream{
+         void ok(){
+           print(jumping);
+           print("Is the animal screaming? \n $isScreaming");
+         }
+       }
+
+ENUM
+  >Enum provides code clarity.
+  >Following is an example code for enum:
+        void main() {
+          final employe1=Employe('Abdullah', EmployeType.swe);
+          final employe2=Employe('Awais', EmployeType.finance);
+          final employe3=Employe('Arsal', EmployeType.marketing);
+          employe1.fn();
+          employe2.fn();
+          employe3.fn(); 
+        }
+        enum EmployeType{
+          swe,
+          finance,
+          marketing
+        }
+        class Employe {
+          final String name;
+          final EmployeType type;
+          Employe(this.name, this.type);
+          void fn(){
+            switch(type){
+              case EmployeType.swe:
+                print('Software Engineer.');
+              case EmployeType.finance:
+                print('Finance.');
+              default:
+                print('Marketing.');
+            };    
+          }
+        }
+
+FUTURE
+  >If you want something to run apart or like parallel to your code but don't want it to stop the 
+    code from compiling while running as well.
+  >Following is simple example code for future function:
+    //We can use the "Future" keyword with main is wanted or not(Means it's a choice)
+      simple void is like fire not wait whereas Future<void> waits IG. 
+      In any case, no need to use Future for main function (MOSTLY).
+      void main() async {
+        var result= await fn();
+        print(result); //Prints the returned value
+        print(await fn());//Prints the returned value
+        var result2=fn();
+        print(result2); //Prints "Instance of '_Future<String>'"
+        print(fn());//Prints "Instance of '_Future<String>'"
+        print('Hi');
+        print('oK');
+        print('sure');
+        }
+        Future<String> fn() async{
+          return 'Hey from Future!';
+        }
+        //Another way to use the above function without the keyword 'async':
+        Future<String> fn() {
+          return Future(() {
+            return 'Hey from Future!';
+          });
+        }
+    //Following is another example of Future with the keyword "then":
+        void main()  {
+            print('Hi');
+            fn().then((val){
+              print(val);
+            }); //Prints the value from the function "fu()" after 2 seconds of exicuting the other code.
+            var result2 = fn();
+            print(result2); //Prints "Instance of '_Future<String>'"
+            print(fn()); //Prints "Instance of '_Future<String>'"
+            print('oK');
+            print('sure');
+          }
+          Future<String> fn() {
+            //The async can or can't be used, up to you, because we used "Future".
+            return Future.delayed(Duration(seconds:2),() async{
+              return 'Hey from Future!';
+            } );
+          }
+      //No need to put async with the main function if using "then" or else it will have to be as the 
+        //bellow code and function as the bellow code.
+      //Another example:
+        void main() async {
+            print('Hi');
+            await fn().then((val){
+              print(val);
+            }); //Prints the value from the function "fu()" after 2 seconds and then prints the other things.
+                //  Basically it is same as not using "then".
+            var result2 = fn();
+            print(result2); //Prints "Instance of '_Future<String>'"
+            print(fn()); //Prints "Instance of '_Future<String>'"
+            print('oK');
+            print('sure');
+          }
+          Future<String> fn() {
+            //The async can or can't be used, up to you, because we used "Future".
+            return Future.delayed(Duration(seconds:2),() async{
+              return 'Hey from Future!';
+            } );
+          }
+          
+EXCEPTION HANDLING  
+      >Following is the example code for exception handling using try-catch:
+        import 'package:http/http.dart' as http;
+        import 'dart:convert';        
+        void main() async {
+            var url = Uri.https('jsonplacehoder.typicode.com', 'users/1');  
+            try {
+              final res = await http.get(url);
+            print(jsonDecode(res.body)['name']);
+            }catch(e){
+              print('Errrrroooorrrrr IDIOT!');
+            }
+        }
+      >Following is another way using "then":
+          import 'package:http/http.dart' as http;
+          import 'dart:convert';            
+          void main() {
+            var url = Uri.https('jsonplaceholdr.typicode.com', 'users/1');  
+            http.get(url).then((res){
+              print(jsonDecode(res.body)['name']);
+            }).catchError((err){
+              print("Errrrroooorrrrr IDIOT!");
+            });
+          }
+
+STREAM
+  >Following is an example code for stream:
+          void main() async {
+            countDown().listen(
+              (val) {
+                print(val);
+              },
+              onDone: () {
+                print("HEY I'M DONE!");
+              },
+              onError: (e) {
+                print('Dude check this error: $e');
+              },
+            );
+          }
+          Stream<int> countDown() async* {
+            for (int i = 5; i > 0; i--) {
+              yield i ~/ (i - 3); // This will throw a runtime error when i = 3 (division by zero)
+              await Future.delayed(Duration(seconds: 1));
+            }
+          }
+          >You can't 'return' anything with "stream". actually it's because of "async*".
+              So you can 'return' without 'async*' but then the 'return' has to be a stream.
+  >Following is another example:
+      void main() async{
+          countDown().listen((val){
+            print(val);
+          }, onDone:(){
+            print("HEY I'M DONE!");
+          }, onError:(e){
+            print('Dude check this error: $e');
+          });          
+        }
+        Stream<int> countDown() {
+            return Stream.periodic(Duration(seconds:1),(val){
+              return val;
+            });
+            }
